@@ -336,6 +336,10 @@ main {
   border-radius: 20px;
 }
 
+.foto {
+  border-radius: 100%;
+}
+
 .info-content .name {
   color: var(--white-2);
   font-size: var(--fs-3);
@@ -829,6 +833,11 @@ main {
   line-height: 1.6;
 }
 
+.timeline-text2 {
+  color: var(--light-gray);
+  font-weight: var(--fw-300);
+  line-height: 1.6;
+}
 
 /**
  * skills 
@@ -1339,7 +1348,8 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .avatar-box { border-radius: 30px; }
 
-  .avatar-box img { width: 120px; }
+  .avatar-box img { width: 120px;
+                    border-radius: 20px; }
 
   .info-content .name { margin-bottom: 15px; }
 
