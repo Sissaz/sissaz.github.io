@@ -90,6 +90,59 @@ if (filterBtn.length) {
   }
 }
 
+
+/***************************************
+ * FILTRO EXCLUSIVO DA GALLERY
+ ***************************************/
+
+// 1. Seleciona todos os botões da nova galeria
+const galleryBtns = document.querySelectorAll("[data-gallery-btn]");
+// 2. Seleciona todos os itens da nova galeria
+const galleryItems = document.querySelectorAll("[data-gallery-item]");
+
+// 3. Função que filtra os itens da galeria
+function galleryFilterFunc(selectedValue) {
+  for (let i = 0; i < galleryItems.length; i++) {
+    const category = galleryItems[i].dataset.galleryCategory.toLowerCase();
+
+    // Se clicar em “All”
+    if (selectedValue === "all") {
+      galleryItems[i].classList.add("active");
+    }
+    // Se a categoria do item bater com o valor clicado
+    else if (category === selectedValue) {
+      galleryItems[i].classList.add("active");
+    }
+    else {
+      galleryItems[i].classList.remove("active");
+    }
+  }
+}
+
+// 4. Adiciona evento de clique a cada botão da galeria
+if (galleryBtns.length) {
+  let lastClickedGalleryBtn = galleryBtns[0]; // Se “All” for o 1º
+
+  for (let i = 0; i < galleryBtns.length; i++) {
+    galleryBtns[i].addEventListener("click", function () {
+      // Ex: “Power BI” → “power bi”
+      let selectedValue = this.innerText.toLowerCase().trim();
+
+      // Chama a função
+      galleryFilterFunc(selectedValue);
+
+      // Muda a classe “active” visualmente
+      if (lastClickedGalleryBtn) {
+        lastClickedGalleryBtn.classList.remove("active");
+      }
+      this.classList.add("active");
+      lastClickedGalleryBtn = this;
+    });
+  }
+}
+
+
+
 /* ================================
    FORM CONTATO (se existir)
    ================================ */

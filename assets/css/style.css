@@ -1235,28 +1235,126 @@ textarea.form-input::-webkit-resizer { display: none; }
 .form-btn:disabled:hover::before { background: var(--bg-gradient-jet); }
 
 
-/* Container da galeria */
+/* 
+  =============== GALERIA BASICA ===============
+  Container da galeria e regras base
+*/
 .gallery-list {
-  display: block; /* ou flex */
+  display: block; /* ou flex, se preferir */
   width: 100%;    /* ocupa toda a largura do contêiner principal */
 }
 
-/* Espaçamento entre os items da galeria */
+/* Cada .gallery-item fica oculto por padrão, só aparece ao receber .active */
 .gallery-item {
-  margin-bottom: 30px;
+  display: none;
+  margin-bottom: 30px; /* espaçamento entre itens */
 }
 
-/* Remove a margem do último item (opcional) */
+/* Opcional: remove a margem do último item */
 .gallery-item:last-child {
   margin-bottom: 0;
 }
 
-/* Cada imagem */
-.gallery-list img {
-  display: block;      /* remove inline-gap */
-  width: 100%;         /* força usar 100% do espaço disponível */
-  height: auto;        /* mantém proporção */
-  max-width: 100%;     /* não ultrapassa o contêiner */
+/* Quando tiver .active, exibe o item */
+.gallery-item.active {
+  display: block;
+}
+
+/* 
+  Seções do menu de filtro da galeria 
+  (caso use o mesmo estilo do portfolio)
+*/
+.gallery-filter-list {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.gallery-filter-list .filter-item button {
+  color: var(--light-gray);
+  /* estilo extra, ex: background, border etc. */
+}
+
+.gallery-filter-list .filter-item button.active {
+  color: var(--orange-yellow-crayola);
+}
+
+
+/* 
+  =============== GALERIA COM EFEITO DE HOVER ===============
+  Inspirado no portfolio, com overlay e ícone 
+*/
+
+/* Container que envolve a imagem e o overlay */
+.gallery-img {
+  position: relative;
+  width: 100%;
+  /* height: 200px; <-- Removido (ou comentado) para não forçar altura fixa */
+  border-radius: 16px;
+  overflow: hidden; /* Para "cortar" o overlay dentro do box */
+  margin-bottom: 15px;
+}
+
+/* Overlay invisível por padrão */
+.gallery-img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent; /* invisível */
+  z-index: 1;
+  transition: var(--transition-1); /* tempo de transição */
+}
+
+/* Ao passar o mouse no link (galeria), fica overlay escuro */
+.gallery-item > a:hover .gallery-img::before {
+  background: hsla(0, 0%, 0%, 0.5);
+}
+
+/* Caixa do ícone que aparece no hover */
+.gallery-item-icon-box {
+  --scale: 0.8;
+  background: var(--jet);
+  color: var(--orange-yellow-crayola);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(var(--scale));
+  font-size: 20px;
+  padding: 18px;
+  border-radius: 12px;
+  opacity: 0;
+  z-index: 2; /* acima do ::before */
+  transition: var(--transition-1);
+}
+
+.gallery-item-icon-box ion-icon {
+  --ionicon-stroke-width: 50px;
+}
+
+/* Ao hover, o ícone aumenta e fica opaco (visível) */
+.gallery-item > a:hover .gallery-item-icon-box {
+  --scale: 1;
+  opacity: 1;
+}
+
+/* 
+  =============== IMAGEM e ZOOM ===============
+  Ajuste para manter proporção original 
+*/
+.gallery-img img {
+  width: 100%;   /* preenche a largura do container */
+  height: auto;  /* preserva a proporção original da imagem */
+  /* object-fit: cover; <-- se quiser recortar bordas, mantenha. 
+     Se não quiser recortar, remova ou use object-fit: contain; */
+  transition: var(--transition-1);
+}
+
+/* Zoom leve ao passar o mouse, se desejar */
+.gallery-item > a:hover img {
+  transform: scale(1.1); /* se não quiser zoom, remova esta linha */
 }
 
 
