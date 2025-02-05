@@ -431,7 +431,9 @@ main {
 .contact-info :is(.contact-link, time, address) {
   color: var(--white-2);
   font-size: var(--fs-7);
+  line-height: 1.2; /* adicione esta linha */
 }
+
 
 .contact-info address { font-style: normal; }
 
@@ -1890,5 +1892,21 @@ textarea.form-input::-webkit-resizer { display: none; }
 	 */
 
   .timeline-text { max-width: 700px; }
+
+
+    /**
+	 * Email
+	 */
+
+  .email-domain {
+    font-size: var(--fs-8); /* ou 11px, por exemplo */
+    line-height: 1.5;
+    /* Se quiser ajustar cor, peso da fonte, etc.:
+       color: var(--light-gray);
+       font-weight: var(--fw-300);
+    */
+  }
+  
+
 
 }
