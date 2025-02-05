@@ -1235,6 +1235,29 @@ textarea.form-input::-webkit-resizer { display: none; }
 .form-btn:disabled:hover::before { background: var(--bg-gradient-jet); }
 
 
+/* Container da galeria */
+.gallery-list {
+  display: block; /* ou flex */
+  width: 100%;    /* ocupa toda a largura do contêiner principal */
+}
+
+/* Espaçamento entre os items da galeria */
+.gallery-item {
+  margin-bottom: 30px;
+}
+
+/* Remove a margem do último item (opcional) */
+.gallery-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Cada imagem */
+.gallery-list img {
+  display: block;      /* remove inline-gap */
+  width: 100%;         /* força usar 100% do espaço disponível */
+  height: auto;        /* mantém proporção */
+  max-width: 100%;     /* não ultrapassa o contêiner */
+}
 
 
 
