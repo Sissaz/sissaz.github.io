@@ -2028,6 +2028,36 @@ textarea.form-input::-webkit-resizer { display: none; }
     */
   }
   
+/* ---------------------- */
+/*        FOOTER         */
+/* ---------------------- */
+footer {
+  width: 100%;
+  background-color: #121212;
+  text-align: center;
+  padding: 10px;
+  font-size: 11px;
+  color: #f3f3f3;
+  overflow: hidden; /* impede transbordo, mas pode cortar texto se a janela for pequena */
+}
+
+footer p {
+  display: inline-block;
+  white-space: nowrap;
+  word-break: normal; /* não quebra em caracteres especiais */
+  overflow-wrap: normal;
+  margin: 0; /* para garantir que não haja espaços extras */
+}
+
+footer a {
+  color: #e18085;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
 
 
 }
